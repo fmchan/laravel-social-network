@@ -63,8 +63,8 @@ class User extends Authenticatable
     }
 
     public function has($Model){
-        if (count($this->$Model) > 0) return true;
-        return false;
+        $mCount = is_array($this->$Model) ? count($this->$Model) : 0;
+        return $mCount > 0;
     }
 
     public function getPhoto($w = null, $h = null){
